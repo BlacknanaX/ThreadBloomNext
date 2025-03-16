@@ -1,5 +1,5 @@
-import {Banner, Header} from "@/components/Header";
-import {Footer} from "@/components/Footer";
+import {Banner, Header} from "@/components/header";
+import {Footer} from "@/components/footer";
 
 export const experimental_ppr = true;
 

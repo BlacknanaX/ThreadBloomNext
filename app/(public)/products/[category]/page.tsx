@@ -1,9 +1,9 @@
 import Image from "next/image";
-import {ProductCard} from "@/components/ProductCard";
+import {ProductCard} from "@/components/productCard";
 import {Products} from "@/lib/placehold-data";
 import React from "react";
 
-export default function Page() {
+export default function Page(props:{params:Promise<{category:string}>}) {
     const columns = Math.min(Products.length, 4);
 
     return (

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
-import { Newsletter } from "./Newsletter";
+import { Newsletter } from "./newsletter";
 
 export function Footer() {
     return (

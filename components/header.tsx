@@ -1,22 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
     Sheet,
     SheetContent,
@@ -33,10 +20,13 @@ import {
     ChevronDown
 } from "lucide-react";
 import { Categories } from "@/lib/data";
+import {usePathname} from "next/navigation";
+import clsx from 'clsx';
 
-// // 处理菜单数据
-const mainCategories = Categories.filter(cat => cat.id.length === 1);
-const subCategories = Categories.filter(cat => cat.id.length > 1);
+
+ // Deal with the navigation category data
+const mainCategories = Categories.filter(cat => cat.level === "0");
+const subCategories = Categories.filter(cat => cat.level === "1");
 
 
 export function Banner(){
@@ -54,14 +44,16 @@ export function Banner(){
 }
 
 export function Header() {
+    const pathname = usePathname();
+
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [selectedMainCategory, setSelectedMainCategory] = useState<string | null>(null);
     const [isScrolled, setIsScrolled] = useState(false);
 
-    // 获取特定主分类的子分类
+    // classify subCategories to their mainCategory
     const getSubCategories = (mainCategoryId: string) => {
-        return subCategories.filter(sub => sub.id.startsWith(mainCategoryId));
+        return subCategories.filter(sub => sub.pid === mainCategoryId);
     };
 
     // Handle scroll effect
@@ -134,7 +126,7 @@ export function Header() {
                                             {selectedMainCategory === category.id && (
                                                 <div className="pl-4 space-y-2">
                                                     <Link
-                                                        href={`/products/category:${category.name.toLowerCase()}`}
+                                                        href={`/products/${category.name.toLowerCase()}`}
                                                         className="block py-2 text-base hover:text-primary transition-colors"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
@@ -143,7 +135,7 @@ export function Header() {
                                                     {getSubCategories(category.id).map((subCategory) => (
                                                         <Link
                                                             key={subCategory.id}
-                                                            href={`/products/category:${subCategory.name.toLowerCase()}`}
+                                                            href={`/products/${subCategory.name.toLowerCase()}`}
                                                             className="block py-2 text-base hover:text-primary transition-colors"
                                                             onClick={() => setIsMobileMenuOpen(false)}
                                                         >
@@ -281,7 +273,7 @@ export function Header() {
                             {getSubCategories(selectedMainCategory).map((category) => (
                                 <Link 
                                     key={category.id}
-                                    href={`/products/category:${category.name.toLowerCase()}`}
+                                    href={`/products/${category.name.toLowerCase()}`}
                                     className="flex items-center justify-center p-4 hover:bg-accent hover:text-primary transition-colors"
                                     onClick={() => setSelectedMainCategory(null)}
                                 >

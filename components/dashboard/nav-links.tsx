@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import clsx from 'clsx';
 import { Categories } from "@/lib/data";
 import { useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronDown } from 'lucide-react';
 
 // 处理分类数据
 const mainCategories = Categories.filter(cat => cat.level === "0");
@@ -37,7 +37,7 @@ export default function NavLinks() {
                         )}
                     >
                         <span>{category.name}</span>
-                        <ChevronDownIcon 
+                        <ChevronDown
                             className={clsx(
                                 'w-5 h-5 transition-transform',
                                 {

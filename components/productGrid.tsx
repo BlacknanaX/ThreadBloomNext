@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from "./productCard";
 
 // 示例数据
 const sampleProducts = [
