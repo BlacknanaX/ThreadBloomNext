@@ -14,12 +14,12 @@ export function PublicBreadcrumbs() {
         const isLast = index === paths.length - 1;
         const pathInfo = NavList.find(
             navItem => navItem.name.toLowerCase().replace(/\s+/g, "") === path
-        );
+        ) ?? {id:""};
         console.log(pathInfo);
         return {
             label: path.toUpperCase(),
             href: isLast ? "#" : currentPath,
-            id: pathInfo ? "" : pathInfo.id,
+            id: pathInfo.id,
         }
     });
 
