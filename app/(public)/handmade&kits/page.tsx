@@ -5,14 +5,14 @@ import {Products} from "@/lib/placehold-data";
 import React from "react";
 import { NavList } from '@/lib/data';
 
-interface Props {
-    params: {
-        category: string;
-    };
-}
+// interface Props {
+//     params: {
+//         category: string;
+//     };
+// }
 
-export default function Page({ params }: Props) {
-    const { category } = params;
+export default async function Page({ params }: {params: Promise<{ category: string; }> }) {
+    const { category } = await params;
 
     // 找到当前分类
     const mainCategory = NavList.find(
