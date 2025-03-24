@@ -19,7 +19,7 @@ export function PublicBreadcrumbs() {
         return {
             label: path.toUpperCase(),
             href: isLast ? "#" : currentPath,
-            id: pathInfo.id,
+            id: pathInfo ? "" : pathInfo.id,
         }
     });
 

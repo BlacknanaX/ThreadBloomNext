@@ -13,9 +13,9 @@ export default async function SubCategoryPage({ params }: { params: Promise<{ ca
         cat => cat.id === "a",
     );
 
-    // if (!mainCategory) {
-    //     return <div className="container mx-auto px-4 py-8">Main category not found</div>;
-    // }
+    if (!mainCategory) {
+        return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
+    }
 
     // 找到当前子分类（不区分大小写）
     const currentSubCategory = NavList.find(
@@ -24,9 +24,9 @@ export default async function SubCategoryPage({ params }: { params: Promise<{ ca
             cat.name.toLowerCase().replace(/\s/g, "") === decodeURIComponent(category).toLowerCase()
     );
 
-    // if (!currentSubCategory) {
-    //     return <div className="container mx-auto px-4 py-8">Sub-category not found</div>;
-    // }
+    if (!currentSubCategory) {
+        return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
+    }
 
     // 获取该子分类下的所有产品
     // const subCategoryProducts = Products.filter(
