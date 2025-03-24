@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,15 +19,11 @@ import {
     X,
     ChevronDown
 } from "lucide-react";
-import { Categories } from "@/lib/data";
-import {usePathname} from "next/navigation";
-import clsx from 'clsx';
+import { NavList, Type } from "@/lib/data";
 
-
- // Deal with the navigation category data
-const mainCategories = Categories.filter(cat => cat.level === "0");
-const subCategories = Categories.filter(cat => cat.level === "1");
-
+// Deal with the navigation category data
+const mainCategories = NavList.filter(cat => cat.level === "0");
+const subCategories = NavList.filter(cat => cat.level === "1");
 
 export function Banner(){
     return (
@@ -44,14 +40,13 @@ export function Banner(){
 }
 
 export function Header() {
-    const pathname = usePathname();
-
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [selectedMainCategory, setSelectedMainCategory] = useState<string | null>(null);
     const [isScrolled, setIsScrolled] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
 
-    // classify subCategories to their mainCategory
+    // Classify subCategories to their mainCategory
     const getSubCategories = (mainCategoryId: string) => {
         return subCategories.filter(sub => sub.pid === mainCategoryId);
     };
@@ -62,6 +57,25 @@ export function Header() {
             setIsScrolled(window.scrollY > 0);
         });
     }
+
+    // Handle click outside to close menu
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                // 检查点击是否来自一级菜单按钮
+                const target = event.target as HTMLElement;
+                const isMainMenuButton = target.closest('button[aria-label^="Browse"]');
+                if (!isMainMenuButton) {
+                    setSelectedMainCategory(null);
+                }
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <header 
@@ -126,7 +140,7 @@ export function Header() {
                                             {selectedMainCategory === category.id && (
                                                 <div className="pl-4 space-y-2">
                                                     <Link
-                                                        href={`/products/${category.name.toLowerCase()}`}
+                                                        href={`/handmade&kits/${category.name.toLowerCase()}`}
                                                         className="block py-2 text-base hover:text-primary transition-colors"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
@@ -135,7 +149,7 @@ export function Header() {
                                                     {getSubCategories(category.id).map((subCategory) => (
                                                         <Link
                                                             key={subCategory.id}
-                                                            href={`/products/${subCategory.name.toLowerCase()}`}
+                                                            href={`/handmade&kits/${category.name.toLowerCase()}/${subCategory.name.toLowerCase().replace(/\s+/g, '-')}`}
                                                             className="block py-2 text-base hover:text-primary transition-colors"
                                                             onClick={() => setIsMobileMenuOpen(false)}
                                                         >
@@ -225,24 +239,37 @@ export function Header() {
                         New Arrives
                     </Link>
                     {mainCategories.map((category) => (
-                        <button
+                        <div
                             key={category.id}
-                            onClick={() => {
-                                setSelectedMainCategory(
-                                    selectedMainCategory === category.id ? null : category.id
-                                );
-                            }}
-                            className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-1"
-                            aria-label={`Browse ${category.name}`}
+                            className="relative group"
                         >
-                            {category.name}
-                            <ChevronDown 
-                                className={`h-4 w-4 transition-transform ${
-                                    selectedMainCategory === category.id ? 'rotate-180' : ''
-                                }`} 
-                                aria-hidden="true" 
-                            />
-                        </button>
+                            <button
+                                className={`text-lg font-medium hover:text-primary transition-colors flex items-center gap-1 ${
+                                    getSubCategories(category.id).length > 0 ? 'cursor-pointer' : ''
+                                }`}
+                                aria-label={`Browse ${category.name}`}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    const hasSubCategories = getSubCategories(category.id).length > 0;
+                                    if (hasSubCategories) {
+                                        setSelectedMainCategory(
+                                            selectedMainCategory === category.id ? null : category.id
+                                        );
+                                    }
+                                }}
+                            >
+                                {category.name}
+                                {getSubCategories(category.id).length > 0 && (
+                                    <ChevronDown 
+                                        className={`h-4 w-4 transition-transform ${
+                                            selectedMainCategory === category.id ? 'rotate-180' : ''
+                                        }`} 
+                                        aria-hidden="true" 
+                                    />
+                                )}
+                            </button>
+                        </div>
                     ))}
                     <Link 
                         href="/about_us" 
@@ -260,26 +287,50 @@ export function Header() {
 
                 {/* Categories Content - Desktop */}
                 {selectedMainCategory && (
-                    <div className="pb-4 animate-in fade-in duration-200" role="navigation" aria-label="Categories menu">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {/* Add "All" category */}
-                            <Link 
-                                href={`/products/${mainCategories.find(cat => cat.id === selectedMainCategory)?.name.toLowerCase()}`}
-                                className="flex items-center justify-center p-4 hover:bg-accent hover:text-primary transition-colors"
-                                onClick={() => setSelectedMainCategory(null)}
-                            >
-                                All {mainCategories.find(cat => cat.id === selectedMainCategory)?.name}
-                            </Link>
-                            {getSubCategories(selectedMainCategory).map((category) => (
-                                <Link 
-                                    key={category.id}
-                                    href={`/products/${category.name.toLowerCase()}`}
-                                    className="flex items-center justify-center p-4 hover:bg-accent hover:text-primary transition-colors"
-                                    onClick={() => setSelectedMainCategory(null)}
-                                >
-                                    {category.name}
-                                </Link>
-                            ))}
+                    <div 
+                        ref={menuRef}
+                        className="absolute left-0 right-0 bg-background border-b shadow-lg animate-in fade-in duration-200" 
+                        role="navigation" 
+                        aria-label="Categories menu"
+                    >
+                        <div className="container mx-auto">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
+                                {/* View All Column */}
+                                <div className="flex flex-col">
+                                    <Link 
+                                        href={`/handmade&kits/${mainCategories.find(cat => cat.id === selectedMainCategory)?.name.toLowerCase()}`}
+                                        className="flex items-center justify-center p-4 hover:bg-accent hover:text-primary transition-colors font-medium"
+                                    >
+                                        View All
+                                    </Link>
+                                </div>
+                                
+                                {/* Type Columns */}
+                                {Type.map((type) => {
+                                    const typeSubCategories = getSubCategories(selectedMainCategory).filter(
+                                        sub => sub.type_id === type.id
+                                    );
+                                    
+                                    if (typeSubCategories.length === 0) return null;
+                                    
+                                    return (
+                                        <div key={type.id} className="flex flex-col">
+                                            <div className="p-4 font-medium text-muted-foreground">
+                                                By {type.name}
+                                            </div>
+                                            {typeSubCategories.map((subCategory) => (
+                                                <Link 
+                                                    key={subCategory.id}
+                                                    href={`/${mainCategories.find(cat => cat.id === selectedMainCategory)?.name.toLowerCase().replace(/\s+/g, "")}/${subCategory.name.toLowerCase().replace(/\s+/g, "")}`}
+                                                    className="flex items-center p-4 hover:bg-accent hover:text-primary transition-colors"
+                                                >
+                                                    {subCategory.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 )}

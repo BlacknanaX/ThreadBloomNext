@@ -37,7 +37,7 @@ export function ProductCard({ id, name, price, imageUrl, category }: ProductCard
             {/* Product info */}
             <div className="mt-4 space-y-1">
                 <Link 
-                    href={`/products/${id}`}
+                    href={`/handmade&kits/${id}`}
                     className="text-sm font-medium text-gray-900 hover:text-primary transition-colors"
                 >
                     {name}

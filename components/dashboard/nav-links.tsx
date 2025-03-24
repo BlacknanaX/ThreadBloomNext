@@ -50,7 +50,7 @@ export default function NavLinks() {
                     {expandedCategory === category.id && (
                         <div className="ml-4 space-y-1">
                             <Link
-                                href={`/products/category:${category.name.toLowerCase()}`}
+                                href={`/handmade&kits/category:${category.name.toLowerCase()}`}
                                 className={clsx(
                                     'block px-2 py-1.5 text-sm rounded-md',
                                     {
@@ -64,7 +64,7 @@ export default function NavLinks() {
                             {getSubCategories(category.id).map((subCategory) => (
                                 <Link
                                     key={subCategory.id}
-                                    href={`/products/category:${subCategory.name.toLowerCase()}`}
+                                    href={`/handmade&kits/category:${subCategory.name.toLowerCase()}`}
                                     className={clsx(
                                         'block px-2 py-1.5 text-sm rounded-md',
                                         {
