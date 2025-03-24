@@ -1,28 +1,34 @@
-import { ProductCard } from "@/components/productCard";
-import { Products } from "@/lib/placehold-data";
-import { NavList } from '@/lib/data';
+import {ProductCard} from "@/components/productCard";
+import {Products} from "@/lib/placehold-data";
+import {NavList} from '@/lib/data';
 import React from "react";
 
-export default async function SubCategoryPage({ params }: { params: Promise<{ category: string; }> }) {
-    // const { category } = params;
+export default async function SubCategoryPage({params}: { params: Promise<{ category: string; }> }) {
     const {category} = await params;
 
-    
+
     // 找到当前主分类（不区分大小写）
     const mainCategory = NavList.find(
         cat => cat.id === "a",
     );
 
-    if (!mainCategory) {
-        return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
-    }
+    // if (!mainCategory) {
+    //     return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
+    // }
 
     // 找到当前子分类（不区分大小写）
     const currentSubCategory = NavList.find(
-        cat => cat.level === "1" &&
-            cat.pid === mainCategory.id &&
-            cat.name.toLowerCase().replace(/\s/g, "") === decodeURIComponent(category).toLowerCase()
-    );
+        cat => {
+            try {
+                if (cat.level === "1" &&
+                    cat.pid === mainCategory.id &&
+                    cat.name.toLowerCase().replace(/\s/g, "") === decodeURIComponent(category).toLowerCase()) return cat;
+            } catch (error) {
+                console.log(error);
+            }
+
+        });
+
 
     if (!currentSubCategory) {
         return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
@@ -39,7 +45,8 @@ export default async function SubCategoryPage({ params }: { params: Promise<{ ca
                 <h1 className="text-2xl font-bold mb-6">
                     {mainCategory.name} - {currentSubCategory.name}
                 </h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
+                <div
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
                     {Products.length > 0 ? (
                         Products.map((product) => (
                             <ProductCard
