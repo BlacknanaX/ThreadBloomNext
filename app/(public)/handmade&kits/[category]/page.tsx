@@ -11,25 +11,24 @@ export default async function SubCategoryPage({params}: { params: Promise<{ cate
     // 找到当前主分类（不区分大小写）
     const mainCategory = NavList.find(
         cat => cat.id === "a",
-    ) ?? {id: "", name: category};
+    ) ?? {id: "", name: "Something went wrong."};
 
     // if (!mainCategory) {
     //     return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
     // }
-    const mainCat = mainCategory ? {id: undefined} : mainCategory;
 
     // 找到当前子分类（不区分大小写）
     const currentSubCategory = NavList.find(
         cat =>
             cat.level === "1" &&
-            cat.pid === mainCat.id &&
+            cat.pid === mainCategory.id &&
             cat.name.toLowerCase().replace(/\s/g, "") === decodeURIComponent(category).toLowerCase()
-    );
+    ) ?? {id: "", name: ""};
 
 
-    if (!currentSubCategory) {
-        return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
-    }
+    // if (!currentSubCategory) {
+    //     return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
+    // }
 
     // 获取该子分类下的所有产品
     // const subCategoryProducts = Products.filter(
