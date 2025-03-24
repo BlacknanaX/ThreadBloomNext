@@ -3,6 +3,7 @@ import {Products} from "@/lib/placehold-data";
 import {NavList} from '@/lib/data';
 import React from "react";
 
+
 export default async function SubCategoryPage({params}: { params: Promise<{ category: string; }> }) {
     const {category} = await params;
 
@@ -10,24 +11,20 @@ export default async function SubCategoryPage({params}: { params: Promise<{ cate
     // 找到当前主分类（不区分大小写）
     const mainCategory = NavList.find(
         cat => cat.id === "a",
-    );
+    ) ?? {id: "", name: category};
 
     // if (!mainCategory) {
     //     return <div className="container mx-auto px-4 py-8">Coming Soon!</div>;
     // }
+    const mainCat = mainCategory ? {id: undefined} : mainCategory;
 
     // 找到当前子分类（不区分大小写）
     const currentSubCategory = NavList.find(
-        cat => {
-            try {
-                if (cat.level === "1" &&
-                    cat.pid === mainCategory.id &&
-                    cat.name.toLowerCase().replace(/\s/g, "") === decodeURIComponent(category).toLowerCase()) return cat;
-            } catch (error) {
-                console.log(error);
-            }
-
-        });
+        cat =>
+            cat.level === "1" &&
+            cat.pid === mainCat.id &&
+            cat.name.toLowerCase().replace(/\s/g, "") === decodeURIComponent(category).toLowerCase()
+    );
 
 
     if (!currentSubCategory) {
