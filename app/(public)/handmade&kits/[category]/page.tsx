@@ -3,8 +3,10 @@ import { Products } from "@/lib/placehold-data";
 import { NavList } from '@/lib/data';
 import React from "react";
 
-export default function SubCategoryPage({ params }: { params: { category: string; } }) {
-    const { category } = params;
+export default async function SubCategoryPage({ params }: { params: Promise<{ category: string; }> }) {
+    // const { category } = params;
+    const {category} = await params;
+
     
     // 找到当前主分类（不区分大小写）
     const mainCategory = NavList.find(
