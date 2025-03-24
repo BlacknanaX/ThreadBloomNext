@@ -27,9 +27,9 @@ export default function SubCategoryPage({ params }: { params: { category: string
     // }
 
     // 获取该子分类下的所有产品
-    const subCategoryProducts = Products.filter(
-        product => product.category_id === currentSubCategory.id
-    );
+    // const subCategoryProducts = Products.filter(
+    //     product => product.category_id === currentSubCategory.id
+    // );
 
     return (
         <main>

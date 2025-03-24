@@ -24,9 +24,9 @@ export default function Page({ params }: Props) {
     }
 
     // 获取该分类下的所有产品
-    const categoryProducts = Products.filter(
-        product => product.category_id === mainCategory.id
-    );
+    // const categoryProducts = Products.filter(
+    //     product => product.category_id === mainCategory.id
+    // );
 
     return (
         <div className="container mx-auto px-4 py-8">
