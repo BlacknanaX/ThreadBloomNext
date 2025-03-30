@@ -5,16 +5,12 @@ import {Products} from "@/lib/placehold-data";
 import React from "react";
 import { NavList } from '@/lib/data';
 
-// interface Props {
-//     params: {
-//         category: string;
-//     };
-// }
+
 
 export default async function Page({ params }: {params: Promise<{ category: string; }> }) {
     const { category } = await params;
 
-    // 找到当前分类
+    // get current main category
     const mainCategory = NavList.find(
         cat => cat.level === "0" && cat.name.toLowerCase() === category
     );

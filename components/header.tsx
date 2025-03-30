@@ -25,7 +25,7 @@ const subCategories = NavList.filter(cat => cat.level === "1");
 
 export function Banner(){
     return (
-        <div className="bg-[#76795b] text-white">
+        <div className="main-bg text-white">
             <div className="container mx-auto">
                 <div className="flex items-center justify-center py-2 text-sm md:text-base">
                     <p className="text-center">
@@ -60,7 +60,7 @@ export function Header() {
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-                // 检查点击是否来自一级菜单按钮
+                // Check if the main section is onclick
                 const target = event.target as HTMLElement;
                 const isMainMenuButton = target.closest('button[aria-label^="Browse"]');
                 if (!isMainMenuButton) {
@@ -83,7 +83,7 @@ export function Header() {
             role="banner"
             aria-label="Main navigation"
         >
-            <div className="container mx-auto">
+            <div className="container mx-auto primary-text-color">
                 {/* Top Bar */}
                 <div className="flex h-20 md:h-24 items-center justify-between gap-3 rounded-lg shrink-0">
                     {/* Menu Trigger - Only for mobile */}
@@ -111,7 +111,7 @@ export function Header() {
                                 >
                                     <Link 
                                         href="/new_arrives"
-                                        className="text-xl font-medium hover:text-primary transition-colors"
+                                        className="text-xl font-medium hover:text-primary transition-colors font-content"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         New Arrives
@@ -127,7 +127,7 @@ export function Header() {
                                                 className="w-full text-left text-xl font-medium hover:text-primary transition-colors flex items-center justify-between"
                                                 aria-label={`Browse ${category.name}`}
                                             >
-                                                {category.name}
+                                                <span className="font-content">{category.name}</span>
                                                 <ChevronDown 
                                                     className={`h-5 w-5 transition-transform ${
                                                         selectedMainCategory === category.id ? 'rotate-180' : ''
@@ -160,14 +160,14 @@ export function Header() {
                                     ))}
                                     <Link 
                                         href="/about_us"
-                                        className="text-xl font-medium hover:text-primary transition-colors"
+                                        className="text-xl font-medium hover:text-primary transition-colors font-content"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         About Us
                                     </Link>
                                     <Link 
                                         href="/blog" 
-                                        className="text-xl font-medium hover:text-primary transition-colors"
+                                        className="text-xl font-medium hover:text-primary transition-colors font-content"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         Blog
@@ -232,7 +232,7 @@ export function Header() {
                 <nav className="hidden md:flex justify-center items-center gap-8 py-4 border-t">
                     <Link 
                         href="/new_arrives" 
-                        className="text-lg font-medium hover:text-primary transition-colors"
+                        className="text-lg font-medium hover:text-primary transition-colors font-content"
                     >
                         New Arrives
                     </Link>
@@ -257,10 +257,10 @@ export function Header() {
                                     }
                                 }}
                             >
-                                {category.name}
+                                <span className="font-content">{category.name}</span>
                                 {getSubCategories(category.id).length > 0 && (
                                     <ChevronDown 
-                                        className={`h-4 w-4 transition-transform ${
+                                        className={`h-4 w-4 transition-transform font-content ${
                                             selectedMainCategory === category.id ? 'rotate-180' : ''
                                         }`} 
                                         aria-hidden="true" 
@@ -271,13 +271,13 @@ export function Header() {
                     ))}
                     <Link 
                         href="/about_us" 
-                        className="text-lg font-medium hover:text-primary transition-colors"
+                        className="text-lg font-medium hover:text-primary transition-colors font-content"
                     >
                         About Us
                     </Link>
                     <Link 
                         href="/blog" 
-                        className="text-lg font-medium hover:text-primary transition-colors"
+                        className="text-lg font-medium hover:text-primary transition-colors font-content"
                     >
                         Blog
                     </Link>

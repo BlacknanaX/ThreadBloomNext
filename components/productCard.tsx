@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart } from "lucide-react";
+import "@/styles/color.css";
 
 interface ProductCardProps {
     id: string;
@@ -38,12 +39,12 @@ export function ProductCard({ id, name, price, imageUrl }: ProductCardProps) {
             <div className="mt-4 space-y-1">
                 <Link 
                     href={`/handmade&kits/${id}`}
-                    className="text-sm font-medium text-gray-900 hover:text-primary transition-colors"
+                    className="text-sm font-medium font-content hover:text-primary transition-colors"
                 >
                     {name}
                 </Link>
                 <div className="flex items-center justify-between">
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-lg font-semibold font-content">
                         £{price.toFixed(2)}
                     </p>
                     {/*<span className="text-sm text-gray-500">*/}
@@ -54,6 +55,8 @@ export function ProductCard({ id, name, price, imageUrl }: ProductCardProps) {
         </div>
     );
 }
+
+
 
 
 

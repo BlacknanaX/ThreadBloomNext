@@ -3,10 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import "@/styles/color.css";
 
 export function Footer() {
     return (
-        <footer className="bg-[#76795b] text-white">
+        <footer className="main-bg text-white">
             <div className="container mx-auto py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Company Info */}
