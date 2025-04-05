@@ -25,7 +25,7 @@ export default function Page() {
                         <div className="flex-grow md:overflow-y-auto py-6 md:py-12">
                             <div className="max-w-[1400px] mx-auto px-2 py-4 md:px-4 md:py-6">
                                 {section.id === "a" ? (
-                                    <h1 className="text-3xl p-4 md:text-4xl text-center mb-8 md:p-8">NEW ARRIVALS</h1>
+                                    <h1 className="text-3xl p-4 md:text-4xl text-center font-content mb-8 md:p-8">NEW ARRIVALS</h1>
                                 ) : (
                                     <></>
                                 )}

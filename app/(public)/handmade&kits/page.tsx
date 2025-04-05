@@ -1,6 +1,6 @@
 'use client';
 
-import {ProductCard} from "@/components/productCard";
+import {ProductCard, ProductList} from "@/components/productCard";
 import {Products} from "@/lib/placehold-data";
 import React from "react";
 import { NavList } from '@/lib/data';
@@ -9,6 +9,7 @@ import { NavList } from '@/lib/data';
 
 export default async function Page({ params }: {params: Promise<{ category: string; }> }) {
     const { category } = await params;
+    const products = Products;
 
     // get current main category
     const mainCategory = NavList.find(
@@ -30,13 +31,14 @@ export default async function Page({ params }: {params: Promise<{ category: stri
                 {mainCategory.name}
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {Products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        {...product}
-                        category={mainCategory.name}
-                    />
-                ))}
+                <ProductList {...products} category={mainCategory.name} />
+                {/*{Products.map((product) => (*/}
+                {/*    <ProductCard*/}
+                {/*        key={product.id}*/}
+                {/*        {...product}*/}
+                {/*        category={mainCategory.name}*/}
+                {/*    />*/}
+                {/*))}*/}
             </div>
         </div>
     );

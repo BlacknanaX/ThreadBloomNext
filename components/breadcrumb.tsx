@@ -12,7 +12,6 @@ import {
 interface Breadcrumb {
     label: string;
     href: string;
-    id: string;
 }
 
 export function Breadcrumbs({
@@ -33,7 +32,7 @@ export function Breadcrumbs({
                                 <Slash/>
                             </BreadcrumbSeparator>
                             <BreadcrumbItem>
-                                <BreadcrumbLink id={breadcrumb.id} href={breadcrumb.href}>{breadcrumb.label}</BreadcrumbLink>
+                                <BreadcrumbLink href={breadcrumb.href}>{breadcrumb.label}</BreadcrumbLink>
                             </BreadcrumbItem>
                         </>
                     );

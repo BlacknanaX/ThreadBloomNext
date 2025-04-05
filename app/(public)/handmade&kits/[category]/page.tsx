@@ -1,4 +1,4 @@
-import {ProductCard} from "@/components/productCard";
+import {ProductCard, ProductList} from "@/components/productCard";
 import {Products} from "@/lib/placehold-data";
 import {NavList} from '@/lib/data';
 import React from "react";
@@ -41,23 +41,22 @@ export default async function SubCategoryPage({params}: { params: Promise<{ cate
                 <h1 className="text-2xl font-bold mb-6">
                     {mainCategory.name} - {currentSubCategory.name}
                 </h1>
-                <div
-                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
+                {/*<div*/}
                     {Products.length > 0 ? (
-                        Products.map((product) => (
-                            <ProductCard
-                                key={product.id}
-                                {...product}
-                                category={currentSubCategory.name}
-                            />
-                        ))
+                        <ProductList products={Products}/>
+                        // Products.map((product) => (
+                        //     <ProductCard
+                        //         key={product.id}
+                        //         {...product}
+                        //         category={currentSubCategory.name}
+                        //     />
+                        // ))
                     ) : (
                         <div className="col-span-full text-center py-8">
                             No products found in this category
                         </div>
                     )}
                 </div>
-            </div>
         </main>
     );
 }

@@ -1,11 +1,12 @@
 import {Banner, Header} from "@/components/header";
 import {Footer} from "@/components/footer";
+import "@/styles/color.css"
 
 export const experimental_ppr = true;
 
 export default function Layout({children}:{children: React.ReactNode}){
     return (
-        <div className="bg-[#f9f5f2]">
+        <div className="content-bg">
         {/*// <div className="flex h-screen flex-row md:flex-row md:overflow-hidden">*/}
             {/*<div className="w-full flex-none md:w-64">*/}
                 <Banner/>

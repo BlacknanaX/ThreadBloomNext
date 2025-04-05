@@ -110,11 +110,11 @@ export function Header() {
                                     aria-label="Main navigation"
                                 >
                                     <Link 
-                                        href="/new_arrives"
+                                        href="/new_arrivals"
                                         className="text-xl font-medium hover:text-primary transition-colors font-content"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
-                                        New Arrives
+                                        New Arrivals
                                     </Link>
                                     {mainCategories.map((category) => (
                                         <div key={category.id} className="space-y-2">

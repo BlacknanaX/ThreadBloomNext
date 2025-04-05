@@ -3,7 +3,18 @@
 }
 
 .main-bg{
-    /*background-color: #76795b;*/
+    background-color: #76795b;
     /*background-color: #5d7749;*/
-    background-color: #947567;
+    /*background-color: #947567;*/
+    /*background-color: #b18c38;*/
+}
+.main-font-content {
+    color: #76795b;
+}
+.content-bg{
+    /*background-color: #f5e6d3;*/
+    background-color: #f9f5f2;
+}
+.secondary-font {
+    color: #947567;
 }
