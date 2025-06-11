@@ -54,8 +54,8 @@ export const Products = [
     },
     {
         id: "3",
-        name: "Running Shoes",
-        price: 79.99,
+        name: "Earthen Bottle",
+        price: 48,
         imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
         category_id: "001",
         reviews: [
@@ -77,8 +77,8 @@ export const Products = [
     },
     {
         id: "4",
-        name: "Coffee Maker",
-        price: 129.99,
+        name: "Nomad Tumbler",
+        price: 35,
         imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
         category_id: "001",
         reviews: [
@@ -100,8 +100,8 @@ export const Products = [
     },
     {
         id: "5",
-        name: "Yoga Mat",
-        price: 29.99,
+        name: "Focus Paper Refill",
+        price: 89,
         imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
         category_id: "001",
         reviews: [
@@ -116,8 +116,8 @@ export const Products = [
     },
     {
         id: "6",
-        name: "Backpack",
-        price: 49.99,
+        name: "Machined Mechanical Pencil",
+        price: 35,
         imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
         category_id: "001",
         reviews: [
@@ -175,5 +175,72 @@ export const Products = [
                 date: "2024-03-24"
             }
         ]
+    }
+];
+
+export const ProductsTable = [
+    {
+        id: "1",
+        name: "Granny Square Rabbit Charm - Vintage Crochet Pendant",
+        price: 30,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock: 1
+    },
+    {
+        id: "2",
+        name: "Dragon Boat Puppy Dumpling - Sweetheart Edition",
+        price: 15,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock: 1
+    },
+    {
+        id: "3",
+        name: "Earthen Bottle",
+        price: 48,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock: 0
+    },
+    {
+        id: "4",
+        name: "Nomad Tumbler",
+        price: 35,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock: 9
+    },
+    {
+        id: "5",
+        name: "Focus Paper Refill",
+        price: 89,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock: 3
+    },
+    {
+        id: "6",
+        name: "Machined Mechanical Pencil",
+        price: 35,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock:5
+    },
+    {
+        id: "7",
+        name: "Blender",
+        price: 89.99,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock: 20
+    },
+    {
+        id: "8",
+        name: "Sunglasses",
+        price: 159.99,
+        imageUrl: "/Granny Square Rabbit Charm - Vintage Crochet Pendant.png",
+        category_id: "001",
+        stock:12
     }
 ];

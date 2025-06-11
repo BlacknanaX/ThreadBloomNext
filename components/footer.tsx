@@ -7,13 +7,13 @@ import "@/styles/color.css";
 
 export function Footer() {
     return (
-        <footer className="main-bg text-white">
+        <footer className="bg-primary text-white">
             <div className="container mx-auto py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Company Info */}
                     <div className="space-y-4">
-                        <h3 className="text-xl font-bold">ThreadBloom Co</h3>
-                        <p className="text-sm opacity-80">
+                        <h3 className="text-xl font-bold font-serif">ThreadBloom Co</h3>
+                        <p className="text-sm opacity-80 font-sans">
                             Your one-stop destination for all your shopping needs. Quality products at great prices.
                         </p>
                         <div className="flex space-x-4">

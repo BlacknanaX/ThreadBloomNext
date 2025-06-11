@@ -1,3 +1,20 @@
+:root {
+    --primary: #76795B;
+    --background: #F5F5F5;
+    --text: #333333;
+    --accent: #B8C2A1;
+    --error: #D32F2F;  /* Price/Stock Alter */
+    --success: #388E3C; /* Order process successfully */
+}
+.product-description {
+    margin-bottom: 1.5em; /* 约 24px */
+    letter-spacing: 0.5px;
+}
+
+.price-section {
+    margin-top: 2em; /* 约 32px */
+}
+
 .font-content {
     color: #313a1d;
 }
@@ -7,6 +24,27 @@
     /*background-color: #5d7749;*/
     /*background-color: #947567;*/
     /*background-color: #b18c38;*/
+}
+/*.button-primary{*/
+/*    background-color: #313a1d;*/
+/*}*/
+/*.button-primary:hover{*/
+/*    background-color: #313a1d;*/
+/*    opacity: 90%;*/
+/*}*/
+/* 按钮状态变化 */
+.button-primary {
+    background: #76795B;
+    color: white;
+    &:hover {
+        background: #5E624A; /* 主色加深15% */
+    }
+}
+.button-secondary{
+    background-color: #5cb85c;
+}
+.button-select:hover{
+    border-color: #313a1d;
 }
 .main-font-content {
     color: #76795b;

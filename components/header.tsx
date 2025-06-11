@@ -25,9 +25,9 @@ const subCategories = NavList.filter(cat => cat.level === "1");
 
 export function Banner(){
     return (
-        <div className="main-bg text-white">
+        <div className="bg-primary text-white">
             <div className="container mx-auto">
-                <div className="flex items-center justify-center py-2 text-sm md:text-base">
+                <div className="flex items-center justify-center py-2 text-handmade-base md:text-handmade-lg">
                     <p className="text-center">
                         🎉 Limited Time Offer: $20 OFF on Orders Over $100 | Free Shipping | 30-Day Returns
                     </p>
@@ -111,7 +111,7 @@ export function Header() {
                                 >
                                     <Link 
                                         href="/new_arrivals"
-                                        className="text-xl font-medium hover:text-primary transition-colors font-content"
+                                        className="handmade-base font-medium hover:text-primary transition-colors font-content font-sans"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         New Arrivals
@@ -139,7 +139,7 @@ export function Header() {
                                                 <div className="pl-4 space-y-2">
                                                     <Link
                                                         href={`/handmade&kits/${category.name.toLowerCase()}`}
-                                                        className="block py-2 text-base hover:text-primary transition-colors"
+                                                        className="block py-2 text-base hover:text-primary transition-colors font-sans"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
                                                         All {category.name}
@@ -148,7 +148,7 @@ export function Header() {
                                                         <Link
                                                             key={subCategory.id}
                                                             href={`/handmade&kits/${category.name.toLowerCase()}/${subCategory.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                                            className="block py-2 text-base hover:text-primary transition-colors"
+                                                            className="block py-2 text-base hover:text-primary transition-colors font-sans"
                                                             onClick={() => setIsMobileMenuOpen(false)}
                                                         >
                                                             {subCategory.name}
@@ -160,14 +160,14 @@ export function Header() {
                                     ))}
                                     <Link 
                                         href="/about_us"
-                                        className="text-xl font-medium hover:text-primary transition-colors font-content"
+                                        className="text-xl font-medium hover:text-primary transition-colors font-content font-sans"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         About Us
                                     </Link>
                                     <Link 
                                         href="/blog" 
-                                        className="text-xl font-medium hover:text-primary transition-colors font-content"
+                                        className="text-xl font-medium hover:text-primary transition-colors font-sans"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         Blog
@@ -183,24 +183,24 @@ export function Header() {
                         className="absolute left-1/2 -translate-x-1/2"
                         aria-label="ThreadBloom Co Home"
                     >
-                        <span className="text-2xl md:text-3xl font-bold hover:opacity-80 transition-opacity">
+                        <span className="text-4xl md:text-4xl font-bold hover:opacity-80 transition-opacity font-heading">
                             ThreadBloom Co
                         </span>
                     </Link>
 
                     {/* User Actions - Right aligned */}
-                    <div className="flex items-center gap-4 md:gap-6 ml-auto">
+                    <div className="flex items-center gap-3 md:gap-5 ml-auto">
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="hover:bg-accent h-14 w-14 md:h-16 md:w-16"
+                            className="h-14 w-14 md:h-16 md:w-16 cursor-pointer hover:bg-secondary"
                             onClick={() => setIsSearchOpen(!isSearchOpen)}
                             aria-label={isSearchOpen ? "Close search" : "Open search"}
                         >
                             {isSearchOpen ? (
-                                <X className="h-7 w-7 md:h-8 md:w-8" aria-hidden="true" />
+                                <X className="h-7 w-7 md:h-10 md:w-10" aria-hidden="true" />
                             ) : (
-                                <Search className="h-7 w-7 md:h-8 md:w-8" aria-hidden="true" />
+                                <Search className="h-7 w-7 md:h-10 md:w-10" aria-hidden="true" />
                             )}
                             <span className="sr-only">Search</span>
                         </Button>
@@ -208,20 +208,20 @@ export function Header() {
                         <Button 
                             variant="ghost" 
                             size="icon" 
-                            className="hover:bg-accent h-14 w-14 md:h-16 md:w-16"
+                            className=" h-14 w-14 md:h-16 md:w-16 cursor-pointer hover:bg-secondary"
                             aria-label="Account settings"
                         >
-                            <User className="h-7 w-7 md:h-8 md:w-8" aria-hidden="true" />
+                            <User className="h-7 w-7 md:h-10 md:w-10" aria-hidden="true" />
                             <span className="sr-only">Account</span>
                         </Button>
 
                         <Button 
                             variant="ghost" 
                             size="icon" 
-                            className="relative hover:bg-accent h-14 w-14 md:h-16 md:w-16"
+                            className="relative h-14 w-14 md:h-16 md:w-16 cursor-pointer hover:bg-secondary"
                             aria-label="Shopping cart"
                         >
-                            <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" aria-hidden="true" />
+                            <ShoppingCart className="h-7 w-7 md:h-10 md:w-10" aria-hidden="true" />
                             <span className="sr-only">Cart</span>
                             <CartCounter count={3} />
                         </Button>
@@ -231,8 +231,8 @@ export function Header() {
                 {/* Desktop Navigation - Only visible on PC */}
                 <nav className="hidden md:flex justify-center items-center gap-8 py-4 border-t">
                     <Link 
-                        href="/new_arrives" 
-                        className="text-lg font-medium hover:text-primary transition-colors font-content"
+                        href="/new_arrivals"
+                        className="text-xl font-medium hover:text-primary transition-colors font-utility"
                     >
                         New Arrives
                     </Link>
@@ -242,7 +242,7 @@ export function Header() {
                             className="relative group"
                         >
                             <button
-                                className={`text-lg font-medium hover:text-primary transition-colors flex items-center gap-1 ${
+                                className={`text-xl font-medium hover:text-primary transition-colors flex items-center gap-1 font-sans ${
                                     getSubCategories(category.id).length > 0 ? 'cursor-pointer' : ''
                                 }`}
                                 aria-label={`Browse ${category.name}`}
@@ -271,13 +271,13 @@ export function Header() {
                     ))}
                     <Link 
                         href="/about_us" 
-                        className="text-lg font-medium hover:text-primary transition-colors font-content"
+                        className="text-xl font-medium hover:text-primary transition-colors font-sans"
                     >
                         About Us
                     </Link>
                     <Link 
                         href="/blog" 
-                        className="text-lg font-medium hover:text-primary transition-colors font-content"
+                        className="text-xl font-medium hover:text-primary transition-colors font-sans"
                     >
                         Blog
                     </Link>
@@ -297,7 +297,7 @@ export function Header() {
                                 <div className="flex flex-col">
                                     <Link 
                                         href={`/handmade&kits/${mainCategories.find(cat => cat.id === selectedMainCategory)?.name.toLowerCase()}`}
-                                        className="flex items-center justify-center p-4 hover:bg-accent hover:text-primary transition-colors font-medium"
+                                        className="flex items-center justify-center p-4 hover:text-primary transition-colors font-medium font-sans"
                                     >
                                         View All
                                     </Link>
@@ -313,14 +313,14 @@ export function Header() {
                                     
                                     return (
                                         <div key={type.id} className="flex flex-col">
-                                            <div className="p-4 font-medium text-muted-foreground">
+                                            <div className="p-4 font-medium text-muted-foreground font-sans">
                                                 By {type.name}
                                             </div>
                                             {typeSubCategories.map((subCategory) => (
                                                 <Link 
                                                     key={subCategory.id}
                                                     href={`/${mainCategories.find(cat => cat.id === selectedMainCategory)?.name.toLowerCase().replace(/\s+/g, "")}/${subCategory.name.toLowerCase().replace(/\s+/g, "")}`}
-                                                    className="flex items-center p-4 hover:bg-accent hover:text-primary transition-colors"
+                                                    className="flex items-center p-4 hover:text-primary transition-colors font-sans"
                                                 >
                                                     {subCategory.name}
                                                 </Link>
@@ -362,7 +362,7 @@ export function Header() {
                             <Button 
                                 type="submit" 
                                 size="lg"
-                                className="h-14 md:h-16 px-8 md:text-lg"
+                                className="h-14 md:h-16 px-8 md:text-lg font-mono"
                                 aria-label="Submit search"
                             >
                                 Search

@@ -1,0 +1,8 @@
+/* 按钮状态变化 */
+.button-primary {
+    background: #76795B;
+    color: white;
+    &:hover {
+        background: #5E624A; /* 主色加深15% */
+    }
+}

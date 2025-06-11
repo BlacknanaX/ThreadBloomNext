@@ -1,7 +1,7 @@
 "use client";
 
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion"
-import {Star, StarHalf, Plus, Minus} from "lucide-react"
+import {Star, Plus, Minus} from "lucide-react"
 import {useState} from "react"
 
 interface Review {
