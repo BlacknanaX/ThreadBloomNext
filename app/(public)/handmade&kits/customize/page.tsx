@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DraggableDecorationItem } from '@/components/customize/DraggableDecorationItem';
+// import { DraggableDecorationItem } from '@/components/customize/DraggableDecorationItem';
 import { ProductPreview } from '@/components/customize/ProductPreview';
 import { CustomizeOptions } from '@/components/customize/CustomizeOptions';
 
@@ -41,7 +41,7 @@ const hairClipOptions = {
 
 export default function CustomizePage() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  // const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedProduct, setSelectedProduct] = useState('');
   const [customization, setCustomization] = useState<{
     baseShape: string;

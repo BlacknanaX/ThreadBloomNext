@@ -1,5 +1,5 @@
 import React from "react";
-import { ShoppingCart, Heart } from "lucide-react";
+// import { ShoppingCart, Heart } from "lucide-react";
 import { Products } from "@/lib/placehold-data";
 import { NavList } from "@/lib/data";
 import { ProductGallery } from "@/components/productGallery";

@@ -8,15 +8,16 @@ import Link from "next/link";
 export default function Page() {
     const sections = NavList.filter(
         section => section.pid === "");
-    const subSection = NavList.filter(
-        sub => sub.pid === ""
-    );
+    // const subSection = NavList.filter(
+    //     sub => sub.pid === ""
+    // );
     return (
         <main>
             {sections.map(section => {
                 const href = section.name.toLowerCase().replace(/\s/g, "");
                 return (
-                    <div className="items-center justify-center text-sm md:text-base">
+                    <div className="items-center justify-center text-sm md:text-base"
+                    key={href}>
                         <LgPromo className="main-bg"
                                  key={section.id}
                                  backgroundImage="/crochet_promo.png"

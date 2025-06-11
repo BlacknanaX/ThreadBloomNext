@@ -1,4 +1,4 @@
-import {ProductCard, ProductList} from "@/components/productCard";
+import {ProductList} from "@/components/productCard";
 import {Products} from "@/lib/placehold-data";
 import {NavList} from '@/lib/data';
 import React from "react";
