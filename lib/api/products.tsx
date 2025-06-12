@@ -7,5 +7,5 @@ export async function getData(): Promise<Products[]> {
 }
 
 export async function fetchProductsPages(query:string){
-    return 1;
+    return query;
 }

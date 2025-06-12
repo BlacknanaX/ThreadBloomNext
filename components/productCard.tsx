@@ -68,7 +68,7 @@ export function ProductList({products}: ProductListProps) {
     const [sortedProducts, setSortedProducts] = React.useState(products);
 
     React.useEffect(() => {
-        let sorted = [...products];
+        const sorted = [...products];
         switch (sortBy) {
             case "price-asc":
                 sorted.sort((a, b) => a.price - b.price);

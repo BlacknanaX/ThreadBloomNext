@@ -1,7 +1,7 @@
 // import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import {PlusIcon, PencilIcon, TrashIcon} from "lucide-react";
 import Link from 'next/link';
-import {Button} from "@/components/ui/button";
+// import {Button} from "@/components/ui/button";
 // import {deleteInvoice} from "@/app/lib/actions";
 
 export function CreateProduct() {
@@ -32,6 +32,7 @@ export function DeleteProduct({ id }: { id: string }) {
     return (
         // <form action={deleteInvoiceWithId}>
         <form>
+            <div>{id}</div>
             <button type="submit" className="rounded-md p-2 hover:bg-gray-100 cursor-pointer">
                 <span className="sr-only ">Delete</span>
                 <TrashIcon className="w-5 text-red-500" />

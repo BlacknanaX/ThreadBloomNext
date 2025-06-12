@@ -6,8 +6,8 @@
  */
 export function ProductPreview({
                                    customization,
-                                   onDecorationMove,
-                                   readonly = false,
+                                   // onDecorationMove,
+                                   // readonly = false,
                                }: {
     customization: {
         baseShape: string;

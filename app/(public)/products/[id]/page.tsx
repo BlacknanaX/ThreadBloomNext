@@ -1,17 +1,17 @@
 import React from "react";
 // import { ShoppingCart, Heart } from "lucide-react";
 import { Products } from "@/lib/placehold-data";
-import { NavList } from "@/lib/data";
+// import { NavList } from "@/lib/data";
 import { ProductGallery } from "@/components/productGallery";
 import { DeliveryReturn } from "@/components/products/deliveryReturn";
 import { Reviews } from "@/components/products/reviews";
 import { ProductOptions } from "@/components/products/productOptions";
 
-interface Props {
-    params: {
-        id: string;
-    };
-}
+// interface Props {
+//     params: {
+//         id: string;
+//     };
+// }
 
 // Mock product images data
 const productImages = [
@@ -32,7 +32,7 @@ export default async function ProductDetailPage({ params }: {
     const product = Products.find(p => p.id === id);
     
     // Find product category
-    const category = product ? NavList.find((c: { id: string }) => c.id === product.category_id) : null;
+    // const category = product ? NavList.find((c: { id: string }) => c.id === product.category_id) : null;
 
     if (!product) {
         return <div className="container mx-auto px-4 py-8">Product not found</div>;

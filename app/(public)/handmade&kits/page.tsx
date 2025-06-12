@@ -1,4 +1,3 @@
-'use client';
 
 import {ProductList} from "@/components/productCard";
 import {Products} from "@/lib/placehold-data";

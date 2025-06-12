@@ -1,7 +1,11 @@
 import {Metadata} from 'next';
-import {productColumns, Products} from "@/components/dashboard/columns";
+import {productColumns,
+    Products
+} from "@/components/dashboard/columns";
 import {ProductTable} from "@/components/dashboard/data-table";
-import {getData, fetchProductsPages} from "@/lib/api/products";
+import {getData,
+    // fetchProductsPages
+} from "@/lib/api/products";
 
 
 export const metadata: Metadata = {
@@ -10,17 +14,19 @@ export const metadata: Metadata = {
 
 // export let pageinationState:PaginationState;
 
-export default async function Page(props:{
-    searchParams?: Promise<{
-        query?:string;
-        page?:number;
-    }>;
-}) {
+export default async function Page(
+//     props:{
+//     searchParams?: Promise<{
+//         query?:string;
+//         page?:number;
+//     }>;
+// }
+) {
     const data:Products[] = await getData();
-    const searchParams = await props.searchParams;
-    const query = searchParams?.query || '';
-    const currentPage:number = Number(searchParams?.page) || 1;
-    const totalPages:number = await fetchProductsPages(query);
+    // const searchParams = await props.searchParams;
+    // const query = searchParams?.query || '';
+    // const currentPage:number = Number(searchParams?.page) || 1;
+    // const totalPages:number = await fetchProductsPages(query);
     return (
         <div className="w-full">
             <div className="flex w-full item-center justify-between">

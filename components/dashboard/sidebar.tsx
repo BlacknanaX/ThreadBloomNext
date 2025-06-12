@@ -1,11 +1,11 @@
 'use client';
 
 import {
-    Calendar,
+    // Calendar,
     ChevronDown,
     ChevronUp,
     Home,
-    Inbox,
+    // Inbox,
     Settings,
     User2,
     AppWindow,
@@ -89,7 +89,7 @@ function SideNav() {
                         {navList.map((item) => {
                             if (item.subs && item.subs.length>0) {
                                 return (
-                                    <Collapsible defaultOpen className="group/collapsible">
+                                    <Collapsible defaultOpen className="group/collapsible" key={item.title}>
                                         <SidebarMenuItem key={item.title}>
                                             <CollapsibleTrigger asChild>
                                                 <SidebarMenuButton asChild>

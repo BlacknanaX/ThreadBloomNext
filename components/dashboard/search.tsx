@@ -2,15 +2,17 @@
 
 // import {MagnifyingGlassIcon} from '@heroicons/react/24/outline';
 import {Search} from "lucide-react";
-import {useSearchParams, usePathname, useRouter} from "next/navigation";
+import {useSearchParams,
+    // usePathname, useRouter
+} from "next/navigation";
 // import {useDebouncedCallback} from "use-debounce";
 
 export default function TableSearch(
     {placeholder}: { placeholder: string }
 ) {
     const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const {replace} = useRouter();
+    // const pathname = usePathname();
+    // const {replace} = useRouter();
 
     // const handleSearch = useDebouncedCallback((term)=> {
     //     // URLSearchParams is a WEB API that provides utility methods

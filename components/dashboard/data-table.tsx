@@ -23,7 +23,9 @@ import {Button} from "@/components/ui/button";
 import {DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 import * as React from "react";
 import {DropdownMenuContent} from "@radix-ui/react-dropdown-menu";
-import {ChevronDown, Plus, Search} from "lucide-react";
+import {ChevronDown,
+    // Plus,
+    Search} from "lucide-react";
 import {Products} from "@/components/dashboard/columns";
 import {Input} from "@/components/ui/input";
 import {CreateProduct} from "@/components/dashboard/button";
