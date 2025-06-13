@@ -1,6 +1,9 @@
-export async function Page({params}:{
-    params: Promise<{id:string}>
-}){
-    const {id} = await params;
-    return <>{id}</>;
+// export async function Page({params}:{
+//     params: Promise<{id:string}>
+// }){
+//     const {id} = await params;
+//     return (<>{id}</>);
+// }
+export function Page(){
+    return (<></>);
 }
