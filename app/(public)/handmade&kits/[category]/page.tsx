@@ -34,6 +34,15 @@ export default async function SubCategoryPage({params}: { params: Promise<{ cate
     // const subCategoryProducts = Products.filter(
     //     product => product.category_id === currentSubCategory.id
     // );
+    const products = Products.map(product => {
+        return {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            category: currentSubCategory.name,
+        }
+    })
 
     return (
         <main>
@@ -43,7 +52,7 @@ export default async function SubCategoryPage({params}: { params: Promise<{ cate
                 </h1>
                 {/*<div*/}
                     {Products.length > 0 ? (
-                        <ProductList products={Products}/>
+                        <ProductList products={products}/>
                         // Products.map((product) => (
                         //     <ProductCard
                         //         key={product.id}
